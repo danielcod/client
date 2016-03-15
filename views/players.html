@@ -1,0 +1,21 @@
+<div class="players-view">
+	<div class="top-title">
+        <h3>Players</h3>
+	</div>	
+    <table class="table table-striped table-advance players-view" id="playersTable">
+        <tr>
+            <th>Serial</th>
+            <th>Location</th>
+            <th>Last connected</th>
+            <th><button id="resetAllBtn" name="resetAllBtn" class="btn btn-onpar btn-lg resetBtn" ng-click="updateAllPlayers()" uib-tooltip="All signage players will refresh within 15 minutes"><i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh All</button></th>
+        </tr>
+        <tr ng-repeat="playerinfo in playersInfo track by playerinfo.player_id">
+            <td>{{playerinfo.player_id}}</td>
+            <td>{{playerinfo.location}}</td>
+            <td>{{formateDate(playerinfo.last_connect) | date:'MMM d, y h:mm a'}}</td>
+            <td>
+                <button id="resetBtn" name="resetBtn" class="btn btn-onpar btn-md resetBtn" ng-click="updatePlayer(playerinfo.player_id)" uib-tooltip="Signage player {{playerinfo.player_id}} will refresh within 15 minutes"><i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh Signage</button>
+            </td>
+        </tr>
+    </table>
+</div>

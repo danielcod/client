@@ -1,0 +1,42 @@
+CACHE MANIFEST
+# version 03042016 v0.2
+CACHE:
+# CSS files
+/assets/css/angular-bootstrap-lightbox.min.css
+/assets/css/bootstrap.min.css
+/assets/css/daterangepicker.css
+/assets/css/font-awesome.min.css
+#/assets/css/main.css
+#/assets/css/custom.css
+/assets/css/dropzone.css
+/assets/css/ng-sortable.min.css
+/assets/css/ng-sortable.style.min.css
+# HTML files
+# JS files
+/assets/js/angular.js
+/assets/js/angular-animate.min.js
+/assets/js/angular-bootstrap-lightbox.min.js
+/assets/js/angular-route.min.js
+/assets/js/daterangepicker.js
+/assets/js/dropzone.js
+/assets/js/jquery.min.js
+/assets/js/marquee.js
+/assets/js/jquery-ui.js
+/assets/js/moment.min.js
+/assets/js/ng-sortable.min.js
+/assets/js/ng-videosharing-embed.min.js
+/assets/js/ui-bootstrap-tpls.min.js
+/assets/js/bootstrap.min.js
+/scripts/controllers/main.js
+/scripts/controllers/crawl.js
+#/scripts/controllers/slide.js
+/scripts/controllers/userinfo.js
+/scripts/controllers/schedule.js
+/scripts/controllers/viewschedule.js
+/scripts/controllers/fileupload.js
+/scripts/controllers/login.js
+/scripts/controllers/edittext.js
+/scripts/controllers/players.js
+#/scripts/app.js
+NETWORK:
+*

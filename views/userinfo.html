@@ -1,0 +1,62 @@
+<div class="slide-view" ng-init="change_flag = false">
+    <div class="top-title">
+        <h3>User Information</h3>
+	</div>	
+    <form class="form-horizontal" name="userInfo" ng-submit="updateClk()">
+        <div class="form-group">
+            <div class="form-horizontal">
+                <label class="col-sm-4 control-label">User ID</label>
+                <label class="col-sm-4 control-label user-id">{{access_id}}</label>
+                <!--<p class="col-sm-6 col-sm-offset-2 text-default">{{access_id}}</p>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">First Name</label>
+            <!--<label for="inputEmail3" class="col-sm-4 control-label pull-left">{{first_name}}</label>-->
+            <div class="col-sm-4">
+                <input ng-model="first_name" type="text" value="{{first_name}}" class="form-control onpar" placeholder="First Name">
+                <!--{{first_name}}-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Last Name</label>
+            <!--<label for="inputEmail3" class="col-sm-4 control-label">{{last_name}}</label>-->
+            <div class="col-sm-4">
+                <input ng-model="last_name" type="text" value="{{last_name}}" class="form-control onpar" placeholder="Last Name">
+                <!--{{last_name}}-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">User Email</label>
+
+            <div class="col-sm-4">
+                <input ng-model="user_email" value="{{user_email}}" type="email" class="form-control onpar" placeholder="User Email">
+
+            </div>
+        </div>
+        <div class="form-group" ng-show="change_flag">
+            <label class="col-sm-4 control-label">Current Password</label>
+            <div class="col-sm-4">
+                <input ng-model="cur_password" type="password" class="form-control onpar" placeholder="Current Password">
+            </div>
+        </div>
+        <div class="form-group" ng-show="change_flag">
+            <label class="col-sm-4 control-label">New Password</label>
+            <div class="col-sm-4">
+                <input ng-model="new_password" type="password" class="form-control onpar" placeholder="New Password">
+            </div>
+        </div>
+        <div class="form-group" ng-show="change_flag">
+            <label class="col-sm-4 control-label">Confirm Password</label>
+            <div class="col-sm-4">
+                <input ng-model="con_password" type="password" class="form-control onpar" placeholder="Confirm Password">
+            </div>
+        </div>
+		<div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+                <button class="btn btn-onpar btn-lg" ng-href="" ng-click="change()"><i class="fa fa-key"></i>&nbsp;&nbsp;Change Password</button>
+                <button type="submit" class="btn btn-onpar btn-lg"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Update</button>
+            </div>
+        </div>
+    </form>
+</div>

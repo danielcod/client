@@ -1,0 +1,41 @@
+<div class="modal show login-format" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-center">On Par TV Login</h1>
+            </div>
+            <div class="modal-body">
+            <form class="form col-md-12 center-block" name="loginForm" ng-submit="btnClk()">
+                <div class="form-group">
+                    <!--<label for="email" class="col-sm-2 control-label">Email</label>-->
+                        <input name="email" ng-model="user_email" id="email" type="email" class="form-control onpar" placeholder="Email" ng-change="wrong_login = false" />
+                </div>
+                <div class="form-group">
+                    <!--<label for="password" class="col-sm-2 control-label">Password</label>-->
+                        <input name="password" id="password" ng-model="user_password" type="password" class="form-control onpar" placeholder="Password" ng-change="wrong_login = false" />
+                </div>
+                <div class="form-group">
+                    <h5 class="col-sm-offset-2 col-sm-8 text-danger" ng-show="wrong_login">Error: Incorrect Email or Password.</h5>
+                </div>
+                <!--    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                        </div>
+                    </div>-->
+                <div class="form-group">
+                        <button type="submit" name="submit" class="btn btn-onpar btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Sign in</button>
+                        <!--<span><a href="#">Need help?</a></span>-->
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

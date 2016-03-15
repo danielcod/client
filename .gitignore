@@ -1,0 +1,12 @@
+/bower_components
+/libs
+/images
+/upload
+/.idea
+/node_modules
+/admin/bower_components
+/admin/libs
+/real
+/real_back
+/webworker
+/dist

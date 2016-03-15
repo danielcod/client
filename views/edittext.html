@@ -1,0 +1,32 @@
+<div class="schedule-view">
+    <div class="top-title">
+        <h3>Edit Crawl</h3>
+    </div>
+    <form class="form-horizontal" name="scheduleForm" ng-submit="updateClk()">
+        <div class="form-group">
+            <label for="new_text" class="col-sm-3 control-label">Text</label>
+            <div class="col-sm-4">
+                <textarea ng-model="text_content" id="new_text" type="text" class="form-control onpar" placeholder="Enter crawl text here"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="active_period" class="col-sm-3 control-label">Active Period</label>
+            <div class="col-sm-4">
+                <input type="text" id="active_period" name="daterange" class="active_period form-control onpar" ng-model="active_time" placeholder="Active Period"  ng-disabled="active_always" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="active_always" class="col-sm-3 control-label">Active all the time</label>
+            <div class="col-sm-4">
+                <input type="checkbox" name="active_always" id="active_always" ng-model="active_always" class="form-control active_always onpar" placeholder="Active all the time"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-onpar"><i class="fa fa-floppy-o"></i> {{addoredit == 1 ? "Save" : "Update"}}</button>
+                <button type="button" class="btn btn-onpar" ng-click="back()"><i class="fa fa-undo"></i> Back</button>
+            </div>
+        </div>
+    </form>
+</div>

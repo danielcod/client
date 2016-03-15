@@ -1,0 +1,67 @@
+<div class="crawl-view">
+    <div class="top-title">
+        <h3>Crawl Edit</h3>
+    </div>
+    <div class="crawl-edit form-group">
+        <div class="col-md-10 col-sm-12 col-xs-12 crawl-edit-container">
+            <div class="crawl-option-container pull-left">
+                <div class="color-group">
+                    <label for="bg_color" class="control-label pull-left color-label">Crawl Background Color:</label>
+                    <div class="pull-left">
+                        <input ng-model="bg_color" limit-to="6" uib-tooltip="Enter color in Hex" type="text" name="bg_color" id="bg_color" class="form-control onpar" placeholder="Hex #" ng-change="changeBg()" />
+                    </div>
+                    <div class="color-preview pull-left"></div>
+                    <button class="btn btn-onpar pull-left" name="set_bgColor" ng-click="set_bgColor()"><i class="fa fa-paint-brush"></i> Set BG Color</button>
+                </div>
+                <div class="button-group">
+                    <iframe name="my_iframe" id="my_iframe" style="display: none;"></iframe>
+                    <form action="{{upload_api_url}}" method="post"  enctype='multipart/form-data' id="crawl_form" target="my_iframe">
+                        <input type="hidden" name="user_id" value="{{user_id}}" />
+                        <div class="fallback">
+                            <label for="crawl_logo_file" class="control-label pull-left logo-label">Upload Crawl Logo:</label>
+                            <input type="file" title="upload" name="crawl_logo_file" id="crawl_logo_file" class="btn btn-onpar pull-left file_upload" onchange="angular.element(this).scope().fileSelectChanged(this)" />
+                            <button type="button" class="btn btn-onpar pull-left" ng-click="upload_logo()"><i class="fa fa-upload"></i> Upload Logo</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="crawl_speed">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="crawl_speed" class="control-label pull-left">Crawl Speed:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <output for="crawl_speed" class="col-sm-3" id="speed"></output>
+                        </div>
+                        <div class="col-sm-7">
+
+                            <input type="range" id="crawl_speed" uib-tooltip="Drag left for faster, right for slower" min="15000" max="40000" step="1000" ng-model="crawlSpeed"
+                                   ng-model-onblur ng-change="change_crawlSpeed()" oninput="$('#speed').val(value)" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="logo-preview-container pull-left">
+                <img ng-src="{{logo_img}}" alt="{{logo_img_name}}" id="crawl_logo_preview" class="logo-preview" />
+            </div>
+        </div>
+
+        <div class="col-xs-12 btn-addText">
+            <button class="btn btn-onpar btn-lg pull-right" ng-click="add_text()"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Add Text</button>
+        </div>
+
+    </div>
+    <div class="file_gallery">
+        <ul data-as-sortable="dragControlListeners" data-ng-model="mytexts">
+            <li ng-repeat="mytext in mytexts track by mytext.id" id="image_li_{{mytext.id}}"
+                ng-class="mytext.class_name" class="ui-sortable-handle img-thumbnail" data-as-sortable-item>
+                <div class="form-control text-container" data-as-sortable-item-handle>{{mytext.text}}</div>
+
+                <div class="caption">
+                    <button class="btn btn-onpar btn-xs pull-left" style="width:50%;" ng-click="editClk(mytext.id)">Edit</button>
+                    <button class="btn btn-onpar btn-xs pull-right" style="width:50%;" ng-click="deleteClk(mytext.id)">Delete</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

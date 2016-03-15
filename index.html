@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>On Par TV Clients</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <base href="/">
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/angular-bootstrap-lightbox.min.css" rel="stylesheet">
+		<link href="assets/css/daterangepicker.css" rel="stylesheet"/>
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="assets/css/ng-sortable.min.css" rel="stylesheet">
+        <link href="assets/css/ng-sortable.style.min.css" rel="stylesheet">
+        <link href="assets/css/main.css" rel="stylesheet">
+        <link href="assets/css/custom.css"  rel="stylesheet">
+    </head>
+    <body ng-app="realApp" ng-controller="RootController" ng-init="isLogin=false">
+        <!--[if lte IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+		<div class="navbar navbar-default navbar-static-top" role="navigation" style="display:none;" ng-show="isLogin">
+			<div class="container"> 
+			  <div class="onpar-header">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/"><img src="http://clients.onpar.tv/images/op-header-logo.png" alt="OnPar TV"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="js-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li ng-class="{ active: isActive('/')}"><a ng-href="/">Slides</a></li>
+                        <li ng-class="{ active: isActive('/crawl')}"><a ng-href="/crawl">Crawls</a></li>
+						<li ng-class="{ active: isActive('/viewschedule')}"><a ng-href="/viewschedule">View Schedule</a></li>
+						<li ng-class="{ active: isActive('/slide')}"><a ng-href="/slide?crawl=1">Slide Show</a></li>
+						<li ng-class="{ active: isActive('/userinfo')}"><a ng-href="/userinfo">User Info</a></li>
+                        <li ng-class="{ active: isActive('/players')}"><a ng-href="/players">Players</a></li>
+						<li ng-class="{ active: isActive('/login')}"><a ng-href="/login" ng-click="logout()">Logout</a></li>
+					</ul>
+				</div>
+			  </div>
+			</div>
+		</div>
+
+        <div class="container main-view">
+            <div ng-view=""></div>
+        </div>
+		
+		<div class="navbar-fixed-bottom" style="display:none;" ng-show="isLogin">
+        <footer class="onpar-footer">
+		  <div class="container">
+		    <div class="text-center"><span class="footy"><i class="fa fa-copyright"></i> On Par TV LLC</span><span class="footy">(614) 300-0709</span><span class="footy">support@onpar.tv</span></div>
+		  </div>
+		</footer>
+		</div>
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+
+        <script type="text/javascript" src="assets/js/angular.js"></script>
+        <script type="text/javascript" src="assets/js/angular-animate.min.js"></script>
+        <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
+		<script type="text/javascript" src="assets/js/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="assets/js/ng-videosharing-embed.min.js"></script>
+        <script type="text/javascript" src="assets/js/angular-bootstrap-lightbox.min.js"></script>
+        <script type="text/javascript" src="assets/js/ng-sortable.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/moment.min.js"></script>
+        <script type="text/javascript" src="assets/js/daterangepicker.js"></script>
+        <script type="text/javascript" src="assets/js/marquee.js"></script>
+
+        <script type="text/javascript" src="scripts/app.js"></script>
+        <script type="text/javascript" src="scripts/controllers/main.js"></script>
+        <script type="text/javascript" src="scripts/controllers/slide.js"></script>
+        <script type="text/javascript" src="scripts/controllers/crawl.js"></script>
+        <script type="text/javascript" src="scripts/controllers/userinfo.js"></script>
+        <script type="text/javascript" src="scripts/controllers/login.js"></script>
+        <script type="text/javascript" src="scripts/controllers/fileupload.js"></script>
+        <script type="text/javascript" src="scripts/controllers/edittext.js"></script>
+        <script type="text/javascript" src="scripts/controllers/schedule.js"></script>
+		<script type="text/javascript" src="scripts/controllers/viewschedule.js"></script>
+        <script type="text/javascript" src="scripts/controllers/players.js"></script>
+    </body>
+</html>

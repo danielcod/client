@@ -1,0 +1,40 @@
+<div class="gallery-view">
+    <div><h3>{{request_user_email}} ({{request_name}})</h3><button class="btn btn-onpar btn-lg pull-right" name="file_upload" ng-click="file_page()"><i class="fa fa-camera-retro"></i>&nbsp;&nbsp;Add Image/Video</button></div>
+	<uib-tabset>
+		<uib-tab heading="Active" select="load_activedFiles()">
+			<div class="file_gallery">
+				<ul data-as-sortable="dragControlListeners" data-ng-model="myfiles">
+					<li ng-repeat="myfile in myfiles track by myfile.id" data-as-sortable-item id="image_li_{{myfile.id}}" ng-class="myfile.class_name"
+						class="img-thumbnail">
+						<a ng-click="Lightbox.openModal(myfiles, $index)" data-as-sortable-item-handle>
+							<div ng-if="myfile.file_type == 'video'" class="back_{{myfile.file_type}}"></div>
+							<img ng-src={{myfile.thumb}} alt="" title={{myfile.file_type}} class="img-thumbnail" ng-dblclick="editClk(myfile.id)"/>
+						</a>
+						<div class="caption">
+							<button class="btn btn-default btn-xs pull-left" style="width:50%;" ng-click="editClk(myfile.id)">Edit</button>
+							<button class="btn btn-default btn-xs pull-right" style="width:50%;" ng-click="archiveClk(myfile.id)">Archive</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</uib-tab>
+		<uib-tab heading="Archived" select="load_archivedFiles()">
+			<div class="file_gallery">
+				<ul class="reorder_ul">
+					<li ng-repeat="file in archived_files track by file.id" id="image_archived_{{file.id}}" ng-class="file.class_name"
+						class="img-thumbnail">
+						<a ng-click="Lightbox.openModal(archived_files, $index)">
+							<div ng-if="file.file_type == 'video'" class="back_{{file.file_type}}"></div>
+							<img ng-src={{file.thumb}} alt="" title={{file.file_type}} class="img-thumbnail" ng-dblclick="activeClk(file.id)"/>
+						</a>
+						<div class="caption">
+							<button class="btn btn-default btn-xs pull-left" style="width:50%;" ng-click="activeClk(file.id)">Active</button>
+							<button class="btn btn-default btn-xs pull-right" style="width:50%;" ng-click="deleteClk(file.id)">Delete</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</uib-tab>
+	</uib-tabset>
+</div>
+

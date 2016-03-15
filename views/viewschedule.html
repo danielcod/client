@@ -1,0 +1,51 @@
+<div class="slide-view">
+    <div class="top-title">
+        <h3>Slide Schedule</h3>
+	</div>	
+	<div class="form-group">
+		<div class="col-md-6 schedule-select">
+			<label class="col-sm-5 control-label">Select date</label>
+			<p class="input-group col-sm-7">
+				<input type="text" class="form-control onpar" uib-datepicker-popup="MM/dd/yyyy" ng-model="date"
+					   is-open="popupOpened" datepicker-options="dateOptions" close-text="Close" ng-click="openDatePicker()" ng-change="dateSelectChanged()"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-onpar" ng-click="openDatePicker()"><i class="fa fa-calendar"></i></button>
+			</span>
+			</p>
+		</div>
+	</div>
+    <uib-tabset>
+        <uib-tab heading="Slides" select="load_scheduledFiles()">
+            <div class="file_gallery">
+                <ul class="reorder_ul reorder-photos-list">
+                    <li ng-repeat="myfile in scheduled_files track by myfile.id" id="image_li_{{myfile.id}}" ng-class="myfile.class_name"
+                        class="img-thumbnail">
+                        <a ng-click="Lightbox.openModal(scheduled_files, $index)">
+                            <div ng-if="myfile.file_type == 'video'" class="back_{{myfile.file_type}}"></div>
+                            <img ng-src={{myfile.thumb}} alt="" title={{myfile.file_type}} class="img-thumbnail" ng-dblclick="editClk(myfile.id)"/>
+                        </a>
+                        <div class="caption">
+                            <button class="btn btn-onpar btn-xs pull-left" style="width:50%;" ng-click="editClk(myfile.id)">Edit</button>
+                            <button class="btn btn-onpar btn-xs pull-right" style="width:50%;" ng-click="archiveClk(myfile.id)">Archive</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </uib-tab>
+        <uib-tab heading="Crawls" select="load_texts()">
+            <div class="schedule-view">
+                <div class="file_gallery">
+                    <ul class="reorder_ul reorder-photos-list">
+                        <li ng-repeat="mytext in mytexts track by mytext.id" ng-class="mytext.class_name" class="img-thumbnail">
+                            <div class="form-control text-container" >{{mytext.text}}</div>
+                            <div class="caption">
+                                <button class="btn btn-onpar btn-xs pull-left" style="width:50%;" ng-click="editTextClk(mytext.id)">Edit</button>
+                                <button class="btn btn-onpar btn-xs pull-right" style="width:50%;" ng-click="deleteTextClk(mytext.id)">Delete</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>

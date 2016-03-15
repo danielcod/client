@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>On Par TV Administration</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/css/angular-bootstrap-lightbox.min.css" rel="stylesheet">
+		<link href="../assets/css/daterangepicker.css" rel="stylesheet"/>
+		<link href="../assets/css/font-awesome.min.css" rel="stylesheet"/>
+		
+        <link href="libs/bootstrap-table/src/bootstrap-table.css" rel="stylesheet">
+        <link href="libs/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+        <link href="libs/ng-dialog/css/ngDialog.min.css" rel="stylesheet">
+        <link href="libs/ng-dialog/css/ngDialog-custom-width.css" rel="stylesheet">
+        <link href="libs/ng-dialog/css/ngDialog-theme-default.min.css" rel="stylesheet">
+        <link href="libs/ng-dialog/css/ngDialog-theme-plain.min.css" rel="stylesheet">
+		
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="../assets/css/main.css">
+		<link rel="stylesheet" href="../assets/css/custom.css">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="realApp" ng-controller="RootController">
+        <!--[if lte IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+		<div class="navbar navbar-default navbar-static-top" role="navigation" style="display:none;" ng-show="isLogin">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href=""><img src="http://clients.onpar.tv/images/op-header-logo.png" alt="OnPar TV"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="js-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li ng-class="{ active: isActive('/')}"><a ng-href="#/">Users</a></li>
+						<li ng-class="{ active: isActive('/userinfo')}"><a ng-href="#/userinfo">Change Password</a></li>
+						<li ng-class="{ active: isActive('/login')}"><a ng-href="#/login" ng-click="logout()">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <div class="container main-view">
+            <div ng-view=""></div>
+        </div>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="../assets/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="../assets/js/angular.js"></script>
+        <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../assets/js/angular-animate.min.js"></script>
+        <script type="text/javascript" src="../assets/js/angular-route.min.js"></script>
+		<script type="text/javascript" src="../assets/js/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="../assets/js/ng-videosharing-embed.min.js"></script>
+        <script type="text/javascript" src="../assets/js/angular-bootstrap-lightbox.min.js"></script>
+		<script type="text/javascript" src="../assets/js/moment.min.js"></script>
+        <script type="text/javascript" src="../assets/js/daterangepicker.js"></script>
+        <!--<script src="libs/bootstrap-table/src/bootstrap-table.js"></script>
+        <script src="libs/bootstrap-table/src/bootstrap-table-en-US.js"></script>-->
+        <script src="libs/angular-xeditable/dist/js/xeditable.js"></script>
+        <script src="libs/angularUtils-pagination/dirPagination.js"></script>
+        <script src="libs/ng-dialog/js/ngDialog.min.js"></script>
+
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/slide.js"></script>
+        <script src="scripts/controllers/userinfo.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/admin.js"></script>
+        <script src="../scripts/controllers/fileupload.js"></script>
+        <script src="../scripts/controllers/schedule.js"></script>
+		<script src="scripts/controllers/viewschedule.js"></script>
+        <script src="scripts/controllers/admin_dialog.js"></script>
+        <script src="scripts/controllers/update_dialog.js"></script>
+
+        <!-- endbuild -->
+    </body>
+</html>

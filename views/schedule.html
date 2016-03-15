@@ -1,0 +1,66 @@
+<div class="schedule-view">
+    <div class="top-title">
+        <h3>Slide Edit</h3>
+    </div>
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-4">
+			<p><img ng-src="{{thumb_url}}" class="img-thumbnail img-responsive center-block"/></p>
+		</div>
+	</div>
+    <form class="form-horizontal" name="scheduleForm" ng-submit="updateClk()">
+        <div class="form-group">
+            <label for="inputEmail_shedule" class="col-sm-3 control-label">Title</label>
+            <div class="col-sm-4">
+                <input ng-model="file_title" id="inputEmail_shedule" type="text" class="form-control" placeholder="Title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword_schedule" class="col-sm-3 control-label">Dwell Time</label>
+            <div class="col-sm-4">
+                <input ng-model="dwell_time" id="inputPassword_schedule" type="number" class="form-control" placeholder="Dwell Time">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select_start_effect" class="col-sm-3 control-label">Start Effect</label>
+            <div class="col-sm-4">
+                <select ng-model="start_effect" id="select_start_effect" class="form-control selectpicker">
+                    <option value="fadein">Fade In</option>
+                    <option value="top">Slide from top</option>
+                    <option value="down">Slide from down</option>
+                    <option value="left">Slide from left</option>
+                    <option value="right">Slide from right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select_end_effect" class="col-sm-3 control-label">End Effect</label>
+            <div class="col-sm-4">
+                <select ng-model="end_effect" id="select_end_effect" class="form-control selectpicker">
+                    <option value="fadeout">Fade Out</option>
+                    <option value="top">Slide to top</option>
+                    <option value="down">Slide to down</option>
+                    <option value="left">Slide to left</option>
+                    <option value="right">Slide to right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="daterange" class="col-sm-3 control-label">Active Period</label>
+            <div class="col-sm-4">
+                <input type="text" name="daterange" id="daterange" ng-model="active_time" class="form-control" placeholder="Active Period" ng-disabled="active_always"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="active_always" class="col-sm-3 control-label">Active all the time</label>
+            <div class="col-sm-4">
+                <input type="checkbox" name="active_always" id="active_always" ng-model="active_always" class="form-control active_always" placeholder="Active all the time"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-onpar"><i class="fa fa-floppy-o"></i> Save</button>
+                <button type="button" class="btn btn-onpar" ng-click="back()"><i class="fa fa-undo"></i> Back</button>
+            </div>
+        </div>
+    </form>
+</div>

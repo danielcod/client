@@ -1,0 +1,63 @@
+<div class = "dialog-format ngdialog-message">
+    <h1 class="text-center">Add new user</h1>
+    <br/>
+    <form class="form-horizontal" name="dialogForm" ng-submit="btnClk()">
+        <div class="form-group">
+            <label class="col-sm-5 control-label">First Name</label>
+            <div class="col-sm-7">
+                <input ng-model="first_name" type="text" class="form-control" placeholder="First Name" required="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label">Last Name</label>
+            <div class="col-sm-7">
+                <input ng-model="last_name" type="text" class="form-control" placeholder="Last Name" required="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label">User Email</label>
+            <div class="col-sm-7">
+                <input ng-model="user_email" type="email" class="form-control" placeholder="User Email" ng-change="wrong_email = false" required="">
+                <h6 class="text-danger" ng-show="wrong_email">Duplicated email!</h6>                
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label">Password</label>
+            <div class="col-sm-7">
+                <input ng-model="user_password" type="text" class="form-control" placeholder="User Password" required="">
+            </div>
+        </div>
+
+
+        <div class="control-group permission-group">
+            <label class="col-sm-5 control-label">Permissions</label>
+            <div class="col-sm-offset-1 col-sm-6 controls span2 pages-list">
+                <label class="checkbox">
+                    <input type="checkbox" value="1" name="selectedPages[]" ng-checked="selection.indexOf('1') > -1" ng-click="toggleSelection('1')"> Slide page
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="2" name="selectedPages[]" ng-checked="selection.indexOf('2') > -1" ng-click="toggleSelection('2')"> Crawl Page
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="3" name="selectedPages[]" ng-checked="selection.indexOf('3') > -1" ng-click="toggleSelection('3')"> Players Page
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="4" name="selectedPages[]" ng-checked="selection.indexOf('4') > -1" ng-click="toggleSelection('4')"> ViewSchedule Page
+                </label>
+
+                <label class="checkbox"></label>
+            </div>
+        </div>
+
+<!--        {{ngDialogData[0].first_name}}-->
+
+        <div class="form-group">
+            <div class="col-sm-offset-6 col-sm-6 pull-right">
+                <button type="submit" class="btn btn-onpar"><i class="fa fa-floppy-o"></i> Save</button>
+                <!--<button type="button" class="btn btn-default" ng-click="dg_close()">Close</button>-->
+                <button type="button" class="btn btn-onpar" ng-click="closeThisDialog()"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+
+    </form>
+</div>
