@@ -14,6 +14,7 @@ angular.module('realApp')
 					'user_email': $scope.user_email,
 					'user_password': $scope.user_password
 				};
+
 				var request = $http({
 					method: "post",
 					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -31,6 +32,7 @@ angular.module('realApp')
 							$window.sessionStorage.user_id = html.data.id;
 							$window.sessionStorage.user_email = html.data.user_email;
 							$window.sessionStorage.user_password = html.data.user_password;
+
 							$window.sessionStorage.permission = html.data.permission;
 
 							$rootScope.isLogin = true;

@@ -31,51 +31,61 @@ angular
             });
             $routeProvider
                     .when('/', {
+                        authorization: true,
                         templateUrl: 'views/main.html',
                         controller: 'MainCtrl',
                         controllerAs: 'main'
                     })
                     .when('/slide', {
+                        authorization: false,
                         templateUrl: 'views/slide.html',
                         controller: 'SlideCtrl',
                         controllerAs: 'slideshow'
                     })
                     .when('/crawl', {
+                        authorization: true,
                         templateUrl: 'views/crawl.html',
                         controller: 'CrawlCtrl',
                         controllerAs: 'crawl'
                     })
-                    .when('/userinfo', {
+                    .when('/myinfo', {
+                        authorization: false,
                         templateUrl: 'views/userinfo.html',
                         controller: 'UserinfoCtrl',
                         controllerAs: 'userinfo'
                     })
                     .when('/login', {
+                        authorization: false,
                         templateUrl: 'views/login.html',
                         controller: 'LoginCtrl',
                         controllerAs: 'login'
                     })
                     .when('/fileupload', {
+                        authorization: false,
                         templateUrl: 'views/fileupload.html',
                         controller: 'FileuploadCtrl',
                         controllerAs: 'fileupload'
                     })
                     .when('/edittext', {
+                        authorization: false,
                         templateUrl: 'views/edittext.html',
                         controller: 'EditTextCtrl',
                         controllerAs: 'textObj'
                     })
                     .when('/schedule', {
+                        authorization: false,
                         templateUrl: 'views/schedule.html',
                         controller: 'ScheduleCtrl',
                         controllerAs: 'schedule'
                     })
 					.when('/viewschedule', {
+                        authorization: true,
                         templateUrl: 'views/viewschedule.html',
                         controller: 'ViewscheduleCtrl',
                         controllerAs: 'viewschedule'
                     })
                     .when('/players', {
+                        authorization: true,
                         templateUrl: 'views/players.html',
                         controller: 'PlayersCtrl',
                         controllerAs: 'players'
@@ -135,14 +145,32 @@ angular.module('realApp').factory('dragControlListeners',function($http, $window
 angular.module("realApp").controller("RootController", function ($scope, $window, $location) {
 //	console.log($window.sessionStorage.login);
     // Route Change Watch
-    $scope.$on('$routeChangeStart', function () {
+
+    $scope.$on('$routeChangeStart', function(event, toState, toParams) {
         if($window.sessionStorage.login === "success") {
             $scope.isLogin = true;
         }
         else {
             $scope.isLogin = false;
         }
+
+        if(toState.originalPath != '/login') {
+            var permission_array = $window.sessionStorage.permission.split(',');
+
+            $scope.permission = permission_array;
+
+            if (toState.authorization && !(permission_array.indexOf(toState.originalPath) > -1)) {
+                event.preventDefault();
+                if (toState.originalPath === '/') {
+                    if(permission_array[0] != '')
+                        $location.path(permission_array[0]);
+                    else
+                        $location.path('/');
+                }
+            }
+        }
     });
+
     $scope.logout = function(){
         $window.sessionStorage.login = "";
         $window.sessionStorage.first_name = "";

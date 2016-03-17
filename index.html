@@ -38,12 +38,13 @@
 				</div>
 				<div class="collapse navbar-collapse" id="js-navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li ng-class="{ active: isActive('/')}"><a ng-href="/">Slides</a></li>
-                        <li ng-class="{ active: isActive('/crawl')}"><a ng-href="/crawl">Crawls</a></li>
-						<li ng-class="{ active: isActive('/viewschedule')}"><a ng-href="/viewschedule">View Schedule</a></li>
+						<li ng-class="{ active: isActive('/')}" ng-show="permission.indexOf('/') > -1"><a ng-href="/">Slides</a></li>
+                        <li ng-class="{ active: isActive('/crawl')}" ng-show="permission.indexOf('/crawl') > -1"><a ng-href="/crawl">Crawls</a></li>
+						<li ng-class="{ active: isActive('/viewschedule')}" ng-show="permission.indexOf('/viewschedule') > -1"><a ng-href="/viewschedule">View Schedule</a></li>
 						<li ng-class="{ active: isActive('/slide')}"><a ng-href="/slide?crawl=1">Slide Show</a></li>
-						<li ng-class="{ active: isActive('/userinfo')}"><a ng-href="/userinfo">User Info</a></li>
-                        <li ng-class="{ active: isActive('/players')}"><a ng-href="/players">Players</a></li>
+                        <li ng-class="{ active: isActive('/userinfo')}"><a ng-href="/subusers">Sub Users</a></li>
+                        <li ng-class="{ active: isActive('/players')}" ng-show="permission.indexOf('/players') > -1"><a ng-href="/players">Players</a></li>
+                        <li ng-class="{ active: isActive('/userinfo')}"><a ng-href="/myinfo">My Info</a></li>
 						<li ng-class="{ active: isActive('/login')}"><a ng-href="/login" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div>

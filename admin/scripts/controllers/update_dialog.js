@@ -9,6 +9,9 @@ angular.module("realApp")
         .controller('UpdateCtrl', function ($scope,$window,$http, $rootScope, ngDialog) {
 
 
+            function sortNumber(a,b) {
+                return a - b;
+            }
 
             $scope.toggleSelection = function toggleSelection(pageName){
                 var idx = $scope.selection.indexOf(pageName);
@@ -16,10 +19,11 @@ angular.module("realApp")
                 if(idx > -1){
                     $scope.selection.splice(idx, 1);
                 }else {
+
                     $scope.selection.push(pageName);
+                    $scope.selection.sort(sortNumber);
                 }
 
-                console.log($scope.selection.toString());
             };
 
             // data format
@@ -27,7 +31,7 @@ angular.module("realApp")
             $scope.last_name = $scope.ngDialogData.last_name;
             $scope.user_email = $scope.ngDialogData.user_email;
             $scope.user_password = $scope.ngDialogData.user_password;
-            $scope.selection = $scope.ngDialogData.permission.split(",");
+            $scope.selection = $scope.ngDialogData.permission == '' ? [] : $scope.ngDialogData.permission.split(",");
             // if save button click
             $scope.btnClk = function() {
                 var data = {
