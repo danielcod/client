@@ -1,9 +1,7 @@
-<div class = "update-dialog-format ngdialog-message">
-    <form class="form-horizontal" name="updateForm" ng-submit="btnClk()">
-        <div class="form-group">
-            <label class="col-sm-5 control-label">User ID</label>
-            <label class="col-sm-3 control-label">{{ngDialogData.id}}</label>
-        </div>
+<div class = "dialog-format ngdialog-message">
+    <h1 class="text-center">Add new user</h1>
+    <br/>
+    <form class="form-horizontal" name="dialogForm" ng-submit="btnClk()">
         <div class="form-group">
             <label class="col-sm-5 control-label">First Name</label>
             <div class="col-sm-7">
@@ -30,26 +28,8 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-sm-5 control-label">Role</label>
-            <div class="col-sm-7">
-                <select ng-model="role" class="form-control" required="">
-                    <option value="admin" selected="selected">admin</option>
-                    <option value="user">user</option>
-                </select>
-            </div>
-        </div>
 
-        <div class="form-group" ng-if="role=='user'">
-            <label class="col-sm-5 control-label" for="parent_id">Select Parent Admin</label>
-            <div class="col-sm-7">
-                <select name="parent_id" id="parent_id" ng-model="parent_id" class="form-control" ng-value="parent_id" ng-change="adminSelectChanged(this)" >
-                    <option ng-repeat="admin in alladmins" value="{{admin.id}}">{{admin.first_name+' '+admin.last_name}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="control-group permission-group" ng-if="role=='user'">
+        <div class="control-group permission-group">
             <label class="col-sm-5 control-label">Permissions</label>
             <div class="col-sm-offset-1 col-sm-6 controls span2 pages-list">
                 <label class="checkbox">
@@ -69,13 +49,15 @@
             </div>
         </div>
 
-        <!--{{ngDialogData}}-->
-        <div class="form-group" style="padding-top: 30px;">
+<!--        {{ngDialogData[0].first_name}}-->
+
+        <div class="form-group">
             <div class="col-sm-offset-6 col-sm-6 pull-right">
                 <button type="submit" class="btn btn-onpar"><i class="fa fa-floppy-o"></i> Save</button>
                 <!--<button type="button" class="btn btn-default" ng-click="dg_close()">Close</button>-->
                 <button type="button" class="btn btn-onpar" ng-click="closeThisDialog()"><i class="fa fa-times"></i> Close</button>
             </div>
         </div>
+
     </form>
 </div>

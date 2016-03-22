@@ -34,6 +34,9 @@ angular.module('realApp')
 							$window.sessionStorage.user_password = html.data.user_password;
 
 							$window.sessionStorage.permission = html.data.permission;
+							$window.sessionStorage.role = html.data.role;
+							if(html.data.role == "user")
+								$window.sessionStorage.parent_admin = html.data.parent_admin;
 
 							$rootScope.isLogin = true;
 							// Login Complete //

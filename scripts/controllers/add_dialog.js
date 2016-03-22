@@ -2,18 +2,13 @@
  * @ngdoc function
  * @name realApp.controller:DialogCtrl
  * @description
- * # AdminCtrl
+ * # DialogCtrl
  * Controller of the realApp
  */
 angular.module("realApp")
         .controller('DialogCtrl', function ($scope,$window,$http, ngDialog) {
 
             $scope.selection = [];
-            $scope.role = "admin";
-
-            function sortNumber(a,b) {
-                return a - b;
-            }
 
             $scope.toggleSelection = function toggleSelection(pageName){
                 var idx = $scope.selection.indexOf(pageName);
@@ -21,33 +16,10 @@ angular.module("realApp")
                 if(idx > -1){
                     $scope.selection.splice(idx, 1);
                 }else {
-
                     $scope.selection.push(pageName);
-                    $scope.selection.sort(sortNumber);
                 }
 
             };
-
-            function init(){
-                var request = $http({
-                    method: "post",
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    url: HOST_DIRECTORY + "get_adminusers"
-                });
-                request.success(function (html) {
-                    if(html.result==="YES"){
-                        $scope.alladmins = html.data;
-                    }
-                });
-            }
-
-
-            init();
-
-            $scope.adminSelectChanged = function(v){
-                $scope.parent_id = v.parent_id;
-            }
-
 
             // if save button click
             $scope.btnClk = function() {
@@ -57,9 +29,7 @@ angular.module("realApp")
                         l : $scope.last_name,
                         e : $scope.user_email,
                         p : $scope.user_password,
-                        r : $scope.role,
-                        pp : $scope.selection.toString(),
-                        pa : $scope.parent_id
+                        pp : $scope.selection.toString()
                 }
                 var request = $http({
                     method: "post",
@@ -78,10 +48,7 @@ angular.module("realApp")
                         $scope.last_name = "";
                         $scope.user_email = "";
                         $scope.user_password = "";
-                        $scope.role = "";
-                        $scope.selection = "";
 						$scope.closeThisDialog();
-                        $scope.parent_id = '';
                     }
                 });
                 

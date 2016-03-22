@@ -22,6 +22,7 @@ angular
             'as.sortable',
             'ui.bootstrap',
             'bootstrapLightbox',
+            'ngDialog',
             'angular-marquee'
         ])
         .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
@@ -50,9 +51,9 @@ angular
                     })
                     .when('/myinfo', {
                         authorization: false,
-                        templateUrl: 'views/userinfo.html',
-                        controller: 'UserinfoCtrl',
-                        controllerAs: 'userinfo'
+                        templateUrl: 'views/myinfo.html',
+                        controller: 'MyinfoCtrl',
+                        controllerAs: 'myinfo'
                     })
                     .when('/login', {
                         authorization: false,
@@ -83,6 +84,12 @@ angular
                         templateUrl: 'views/viewschedule.html',
                         controller: 'ViewscheduleCtrl',
                         controllerAs: 'viewschedule'
+                    })
+                    .when('/subusers', {
+                        authorization: false,
+                        templateUrl: 'views/subusers.html',
+                        controller: 'SubusersCtrl',
+                        controllerAs: 'subusers'
                     })
                     .when('/players', {
                         authorization: true,
@@ -141,6 +148,20 @@ angular.module('realApp').factory('dragControlListeners',function($http, $window
 });
 
 
+angular.module("realApp").config(['ngDialogProvider', function (ngDialogProvider) {
+    ngDialogProvider.setDefaults({
+        className: 'ngdialog-theme-default',
+        plain: false,
+        showClose: true,
+        closeByDocument: true,
+        closeByEscape: true,
+        appendTo: false,
+        preCloseCallback: function () {
+            console.log('default pre-close callback');
+        }
+    });
+}]);
+
 
 angular.module("realApp").controller("RootController", function ($scope, $window, $location) {
 //	console.log($window.sessionStorage.login);
@@ -178,6 +199,10 @@ angular.module("realApp").controller("RootController", function ($scope, $window
         $window.sessionStorage.user_id = "";
         $window.sessionStorage.user_email = "";
         $window.sessionStorage.user_password = "";
+        $window.sessionStorage.permission = "";
+        $window.sessionStorage.role = "";
+        if($window.sessionStorage.role == "user")
+            $window.sessionStorage.parent_admin = "";
     };
     $scope.isActive = function(viewLocation) {
         return viewLocation===$location.path();

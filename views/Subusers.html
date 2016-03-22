@@ -6,7 +6,7 @@
         </span>-->
     </div><!-- /.col-lg-6 -->
     <div class="pull-left">
-        <button type="button" class="btn btn-onpar" ng-dialog="views/admin_dialog.html" ng-dialog-controller="DialogCtrl" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Add User</button>
+        <button type="button" class="btn btn-onpar" ng-dialog="views/add_dialog.html" ng-dialog-controller="DialogCtrl" ng-dialog-data="{{pass_data}}" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Add User</button>
     </div>
     <div class="user-" style="padding-top: 50px; margin-top: 50px;">
         <table class="table table-striped" ng-init="no = 0">
@@ -14,10 +14,6 @@
             <tr class='default' style="cursor: pointer;">
                 <th class="text-center" style="width:15%" ng-click="sort('id')">User ID
                     <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                </th>
-
-                <th class="text-center" style="width:15%" ng-click="sort('role')">Role
-                    <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'role'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
 
                 <th class="text-center" style="width:15%" ng-click="sort('first_name')">First Name
@@ -37,9 +33,6 @@
             <tr  dir-paginate="user in users|orderBy:sortKey:reverse|filter:searchText|itemsPerPage:8" style="text-align: center;"  current-page="pagination.current">
                 <td>
                     {{ user.id || 'empty' }}
-                </td>
-                <td>
-                    {{ user.role || 'empty' }}
                 </td>
                 <td>
                     <!-- editable username (text with validation) -->

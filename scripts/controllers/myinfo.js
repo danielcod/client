@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name realApp.controller:UserinfoCtrl
+ * @name realApp.controller:MyinfoCtrl
  * @description
- * # UserinfoCtrl
+ * # MyinfoCtrl
  * Controller of the realApp
  */
 angular.module('realApp')
-		.controller('UserinfoCtrl', function ($scope, $http, $window) {
+		.controller('MyinfoCtrl', function ($scope, $http, $window) {
 			// Login Checkout
 
 			if ($window.sessionStorage.login !== "success") {

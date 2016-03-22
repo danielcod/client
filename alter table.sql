@@ -1,5 +1,6 @@
 ALTER TABLE `sl_users` ADD `permission` VARCHAR( 255 ) DEFAULT ''
 ALTER TABLE `sl_users` ADD `role` VARCHAR( 255 ) DEFAULT ''
+ALTER TABLE `sl_users` ADD `parent_admin` VARCHAR( 255 ) DEFAULT ''
 
 
 CREATE TABLE IF NOT EXISTS `sl_pages` (
