@@ -27,7 +27,7 @@ angular.module('realApp')
 			$scope.currentTab = 'slides';
 
 
-			var userId = $window.sessionStorage.user_id || '', paramExist = 0, file_id;
+			var userId = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin, paramExist = 0, file_id;
 
 			if(($routeParams['id'] !== undefined)&&($routeParams['id'] != '')){
 				userId = $routeParams['id'];

@@ -14,15 +14,12 @@ angular.module("realApp")
 
             $scope.toggleSelection = function toggleSelection(pageName){
                 var idx = $scope.selection.indexOf(pageName);
-
                 if(idx > -1){
                     $scope.selection.splice(idx, 1);
                 }else {
-
                     $scope.selection.push(pageName);
                     $scope.selection.sort(sortNumber);
                 }
-
             };
 
             function init(){

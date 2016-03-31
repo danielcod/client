@@ -23,7 +23,8 @@ angular
             'ui.bootstrap',
             'bootstrapLightbox',
             'ngDialog',
-            'angular-marquee'
+            'angular-marquee',
+            'angularUtils.directives.dirPagination'
         ])
         .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
             $locationProvider.html5Mode({
@@ -96,6 +97,18 @@ angular
                         templateUrl: 'views/players.html',
                         controller: 'PlayersCtrl',
                         controllerAs: 'players'
+                    })
+                    .when('/slides', {
+                        authorization: false,
+                        templateUrl: 'views/slides.html',
+                        controller: 'SlidesCtrl',
+                        controllerAs: 'slides'
+                    })
+                    .when('/slideedit', {
+                        authorization: false,
+                        templateUrl: 'views/slideedit.html',
+                        controller: 'SlideEditCtrl',
+                        controllerAs: 'slideedit'
                     })
                     .otherwise({
                         redirectTo: '/'
@@ -176,17 +189,19 @@ angular.module("realApp").controller("RootController", function ($scope, $window
         }
 
         if(toState.originalPath != '/login') {
-            var permission_array = $window.sessionStorage.permission.split(',');
+            if($window.sessionStorage.permission && $window.sessionStorage.role){
+                var permission_array = $window.sessionStorage.permission.split(',');
+                $scope.permission = permission_array;
+                $scope.role = $window.sessionStorage.role;
 
-            $scope.permission = permission_array;
-
-            if (toState.authorization && !(permission_array.indexOf(toState.originalPath) > -1)) {
-                event.preventDefault();
-                if (toState.originalPath === '/') {
-                    if(permission_array[0] != '')
-                        $location.path(permission_array[0]);
-                    else
-                        $location.path('/');
+                if (toState.authorization && !(permission_array.indexOf(toState.originalPath) > -1)) {
+                    event.preventDefault();
+                    if (toState.originalPath === '/') {
+                        if(permission_array[0] != '')
+                            $location.path(permission_array[0]);
+                        else
+                            $location.path('/');
+                    }
                 }
             }
         }

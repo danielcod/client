@@ -79,7 +79,7 @@ angular.module("realApp")
                         $scope.user_email = "";
                         $scope.user_password = "";
                         $scope.role = "";
-                        $scope.selection = "";
+                        $scope.selection = [];
 						$scope.closeThisDialog();
                         $scope.parent_id = '';
                     }

@@ -8,6 +8,7 @@
 angular.module("realApp")
         .controller('DialogCtrl', function ($scope,$window,$http, ngDialog) {
 
+            var userId = $window.sessionStorage.user_id;
             $scope.selection = [];
 
             $scope.toggleSelection = function toggleSelection(pageName){
@@ -29,7 +30,9 @@ angular.module("realApp")
                         l : $scope.last_name,
                         e : $scope.user_email,
                         p : $scope.user_password,
-                        pp : $scope.selection.toString()
+                        r : "user",
+                        pp : $scope.selection.toString(),
+                        pa : userId
                 }
                 var request = $http({
                     method: "post",
@@ -48,6 +51,7 @@ angular.module("realApp")
                         $scope.last_name = "";
                         $scope.user_email = "";
                         $scope.user_password = "";
+                        $scope.selection = [];
 						$scope.closeThisDialog();
                     }
                 });

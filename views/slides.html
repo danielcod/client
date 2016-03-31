@@ -1,4 +1,11 @@
-<div class = "admin-format">
+<div class="slide-view" ng-show="isLogin">
+    <div class="top-title">
+        <h3>Slides Management</h3>
+    </div>
+
+</div>
+
+<div class="slide-view" ng-show="isLogin">
     <div class="col-sm-3 pull-right input-group">
         <input type="text" ng-model="searchText" class="form-control onpar" placeholder="Search...">
         <!--<span class="input-group-btn">
@@ -6,26 +13,25 @@
         </span>-->
     </div><!-- /.col-lg-6 -->
     <div class="pull-left">
-        <button type="button" class="btn btn-onpar" ng-dialog="views/add_dialog.html" ng-dialog-controller="DialogCtrl" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Add Sub User</button>
+        <button type="button" class="btn btn-onpar" ng-click="add_new_slide()"><i class="fa fa-camera-retro"></i>&nbsp;&nbsp;Add Slide</button>
     </div>
     <div class="user-" style="padding-top: 50px; margin-top: 50px;">
         <table class="table table-striped" ng-init="no = 0">
             <thead>
             <tr class='default' style="cursor: pointer;">
-                <th class="text-center" style="width:15%" ng-click="sort('id')">User ID
+                <th class="text-center" style="width:15%" ng-click="sort('id')">Slide ID
                     <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
 
-                <th class="text-center" style="width:15%" ng-click="sort('first_name')">First Name
+                <th class="text-center" style="width:15%" ng-click="sort('slidename')">Slide Name
                     <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'first_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th class="text-center" style="width:15%" ng-click="sort('last_name')">Last Name
+                <th class="text-center" style="width:15%" ng-click="sort('last_name')">Created By
                     <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'last_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th class="text-center" style="width:20%" ng-click="sort('user_email')">Email
+                <th class="text-center" style="width:20%" ng-click="sort('user_email')">Owner
                     <span class="glyphicon sort-icon" style="font-size: 15px;" ng-show="sortKey == 'user_email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th class="text-center" style="width:15%">Password</th>
                 <th class="text-center" style="width:20%">Edit</th>
             </tr>
             </thead>
@@ -50,12 +56,6 @@
                     <!-- editable username (text with validation) -->
                     <span editable-text="user.user_email" e-type="email" e-name="e" e-form="rowform" e-required>
                     {{ user.user_email || 'empty' }}
-                    </span>
-                </td>
-                <td>
-                    <!-- editable username (text with validation) -->
-                    <span editable-text="user.user_password" e-name="p" e-form="rowform" e-required>
-                        {{ user.user_password || 'empty' }}
                     </span>
                 </td>
                 <td style="white-space: nowrap">

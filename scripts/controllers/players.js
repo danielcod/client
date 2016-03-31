@@ -17,7 +17,7 @@ angular.module('realApp')
 			$('.navbar-fixed-bottom').show();
 		}
 
-		$scope.access_id = $window.sessionStorage.user_id;
+		$scope.access_id = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin;
 
 		$scope.updatePlayer = function (id) {
 			var data = {

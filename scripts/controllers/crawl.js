@@ -9,7 +9,8 @@
 angular.module('realApp')
 	.controller('CrawlCtrl', function ($scope, $window, $http, Lightbox, dragControlListeners) {
 
-		var user_id = $window.sessionStorage.user_id;
+		
+		var user_id = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin;
 		var data = {
 			'user_id': user_id
 		};

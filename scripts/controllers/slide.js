@@ -13,12 +13,12 @@ angular.module('realApp')
 		$('.navbar-fixed-bottom').hide();
 		// External Request Reading
 
-		var userId = $window.sessionStorage.user_id || '', paramExist = 0, crawlFlag = 0, offline = 0;
+		var userId = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin, paramExist = 0, crawlFlag = 0, offline = 0;
+		var data = {
+			user_id: userId
+		};
+		$scope.file_data = [];
 
-		if(($routeParams['id'] !== undefined)&&($routeParams['id'] != '')){
-			userId = $routeParams['id'];
-		}
-		
 		if(($routeParams['crawl'] !== undefined)&&($routeParams['crawl'] != '')){
 			if($routeParams['crawl'] == 1){
 				crawlFlag = 1;
@@ -60,11 +60,42 @@ angular.module('realApp')
 			NEW_REQUEST = true;
 		}
 		// get all slides
-		$scope.file_data = [];
 
-		var data = {
-			user_id: userId
-		};
+		if(($routeParams['id'] !== undefined)&&($routeParams['id'] != '')&&($routeParams['id']!=userId)){
+			var uid = $routeParams['id'];
+			var json_id ={
+				id:uid
+			}
+			var request = $http({// new file download begin
+				method: "post",
+				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+				url: HOST_DIRECTORY + "get_user",
+				data: $.param(json_id)
+			});
+			request.success(
+				function (html) {
+					if (html.result === "YES") {
+
+						var user_temp = html.data[0];
+						console.log(user_temp);
+						if(user_temp.role == "user"){
+							userId = user_temp.parent_admin;
+							data.user_id = userId;
+						}else{
+							userId = uid;
+							data.user_id = userId;
+						}
+
+						refreshSlides();
+
+					}
+				}
+			);
+		}else{
+			refreshSlides();
+		}
+		
+
 
 		function get_slideFiles(){
 			var request = $http({// new file download begin
@@ -387,7 +418,7 @@ angular.module('realApp')
 			}
 		);
 
-		var refreshSlides = function() {
+		function refreshSlides() {
 			$timeout.cancel($scope.timer);
 			console.log('run refreshSlides!');
 			var now = new Date();
@@ -431,5 +462,5 @@ angular.module('realApp')
 			$timeout(refreshSlides, msTillMidnight);
 		};
 
-		refreshSlides();
+
 	});

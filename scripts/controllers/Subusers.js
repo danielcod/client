@@ -11,19 +11,31 @@ angular.module('realApp')
 		.controller('SubusersCtrl', function ($scope, $rootScope, $window, $filter, $http, ngDialog) {
 
 			if ($window.sessionStorage.login !== "success") {// login state checkout
-				$window.location.href = '#/login';
+				$window.location.href = '/login';
 			} else {
 				$('.navbar').show();
 			}
+
+			if ($window.sessionStorage.role !== "admin") {// role checkout
+				$window.location.href = '/';
+			}
+
+			var userId = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin;
+
 			$scope.users = []; //user information getting
+			var data_id = {// user delete
+				id: userId
+			};
 			var request = $http({
 				method: "post",
 				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-				url: HOST_DIRECTORY + "get_users"
+				url: HOST_DIRECTORY + "get_subusers",
+				data: $.param(data_id)
 			});
 			request.success(
 				function (html) {
 					$scope.users = html.data;
+					console.log($scope.users);
 					$rootScope.pass_data = html.data;
 				}
 			);
@@ -66,7 +78,8 @@ angular.module('realApp')
 						var request = $http({//re-update
 							method: "post",
 							headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-							url: HOST_DIRECTORY + "get_users"
+							url: HOST_DIRECTORY + "get_subusers",
+							data: $.param(data_id)
 						});
 						request.success(
 								function (html) {
@@ -117,7 +130,8 @@ angular.module('realApp')
 				var request = $http({
 					method: "post",
 					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-					url: HOST_DIRECTORY + "get_users"
+					url: HOST_DIRECTORY + "get_subusers",
+					data: $.param(data_id)
 				});
 				request.success(
 						function (html) {

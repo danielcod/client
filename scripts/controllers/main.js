@@ -16,8 +16,9 @@ angular.module('realApp')
 				$('.navbar-fixed-bottom').show();
 			}
 
+			var admin_id = $window.sessionStorage.role == "admin" ? $window.sessionStorage.user_id : $window.sessionStorage.parent_admin;
 			var data = {
-				user_id: $window.sessionStorage.user_id
+				user_id: admin_id
 			};
 
 			$scope.currentTab = 'active';

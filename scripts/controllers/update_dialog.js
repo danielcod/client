@@ -8,7 +8,7 @@
 angular.module("realApp")
         .controller('UpdateCtrl', function ($scope,$window,$http, $rootScope, ngDialog) {
 
-
+            var userId = $window.sessionStorage.user_id;
             function sortNumber(a,b) {
                 return a - b;
             }
@@ -32,6 +32,7 @@ angular.module("realApp")
             $scope.user_email = $scope.ngDialogData.user_email;
             $scope.user_password = $scope.ngDialogData.user_password;
             $scope.selection = $scope.ngDialogData.permission == '' ? [] : $scope.ngDialogData.permission.split(",");
+
             // if save button click
             $scope.btnClk = function() {
                 var data = {
@@ -40,7 +41,9 @@ angular.module("realApp")
                         l : $scope.last_name,
                         e : $scope.user_email,
                         p : $scope.user_password,
-                        pp : $scope.selection.toString()
+                        r : "user",
+                        pp : $scope.selection.toString(),
+                        pa : userId
                 }
                 var request = $http({
                     method: "post",
